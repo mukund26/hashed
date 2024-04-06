@@ -22,7 +22,7 @@ def test_sha512_digest():
     assert result_file == 'b1df216b5b05e3965c469492744a5de0c945e0b103c42eb1e57476fbed8f1d489f5cae9b792db37c5d823bc0c6c7d06b056176d6abe5ce076eeadaed414e17a3'
 
     # Test file_digest method with a file containing a string
-    filename = 'test_file.txt'
+    filename = 'test/test_file.txt'
     with open(filename, 'w') as f:
         f.write('This is a test file.')
     

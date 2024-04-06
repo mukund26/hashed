@@ -14,7 +14,7 @@ def test_sha256_digest():
     assert result_hex == '315f5bdb76d078c43b8ac0064e4a0164612b1fce77c869345bfc94c75894edd3'
     
     # Test file_digest method with a file containing a string
-    filename = 'test_file.txt'
+    filename = 'test/test_file.txt'
     with open(filename, 'w') as f:
         f.write('This is a test file.')
     

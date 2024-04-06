@@ -4,3 +4,4 @@ dist
 build
 hashed.egg-info
 local_test
+.coverage
