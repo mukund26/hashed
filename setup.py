@@ -2,22 +2,23 @@ from setuptools import setup, find_packages
 
 setup(
     name='hashed',
-    version='0.1',
+    version='1.0.0',
     packages=find_packages(),
-    entry_points={
-        'console_scripts': [
-            'your-cli-command=your_project.cli:main',
-        ],
-    },
-    install_requires=[
-        # List your dependencies here
-    ],
+    install_requires=[],
     python_requires='>=3.6',
     author='Mukund Agarwal',
     author_email='m.agarwalhp@gmail.com',
     description='Provides secured hashes for given data',
     long_description=open('README.md').read(),
     long_description_content_type='text/markdown',
-    url='https://github.com/your_username/your_project',
+    url='https://github.com/mukund26/hashed',
     license='MIT',
+    keywords=['python', 'hashing', 'sha256', 'sha512'],
+    classifiers= [
+        "Development Status :: 3 - Alpha",
+        "Intended Audience :: Everyone",
+        "Programming Language :: Python :: 3",
+        "Operating System :: MacOS :: MacOS X",
+        "Operating System :: Microsoft :: Windows",
+    ]
 )
