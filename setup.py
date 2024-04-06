@@ -16,7 +16,7 @@ setup(
     keywords=['python', 'hashing', 'sha256', 'sha512'],
     classifiers= [
         "Development Status :: 3 - Alpha",
-        "Intended Audience :: Everyone",
+        "Intended Audience :: Developers",
         "Programming Language :: Python :: 3",
         "Operating System :: MacOS :: MacOS X",
         "Operating System :: Microsoft :: Windows",
