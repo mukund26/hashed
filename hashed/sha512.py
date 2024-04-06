@@ -119,10 +119,14 @@ class SHA512(Hash):
         
         self.update(binary_string)
         
-        return ((self.H[0]).to_bytes(8, 'big') + (self.H[1]).to_bytes(8, 'big') +
-                (self.H[2]).to_bytes(8, 'big') + (self.H[3]).to_bytes(8, 'big') +
-                (self.H[4]).to_bytes(8, 'big') + (self.H[5]).to_bytes(8, 'big') +
-                (self.H[6]).to_bytes(8, 'big') + (self.H[7]).to_bytes(8, 'big'))  
+        FINAL_H = self.H
+        
+        self.__init__()
+        
+        return ((FINAL_H[0]).to_bytes(8, 'big') + (FINAL_H[1]).to_bytes(8, 'big') +
+                (FINAL_H[2]).to_bytes(8, 'big') + (FINAL_H[3]).to_bytes(8, 'big') +
+                (FINAL_H[4]).to_bytes(8, 'big') + (FINAL_H[5]).to_bytes(8, 'big') +
+                (FINAL_H[6]).to_bytes(8, 'big') + (FINAL_H[7]).to_bytes(8, 'big'))  
         
     
     def hex_digest(self, msg):
@@ -133,10 +137,14 @@ class SHA512(Hash):
         
         self.update(binary_string)
         
-        return ((self.H[0]).to_bytes(8, 'big') + (self.H[1]).to_bytes(8, 'big') +
-                (self.H[2]).to_bytes(8, 'big') + (self.H[3]).to_bytes(8, 'big') +
-                (self.H[4]).to_bytes(8, 'big') + (self.H[5]).to_bytes(8, 'big') +
-                (self.H[6]).to_bytes(8, 'big') + (self.H[7]).to_bytes(8, 'big')).hex()
+        FINAL_H = self.H
+        
+        self.__init__()
+        
+        return ((FINAL_H[0]).to_bytes(8, 'big') + (FINAL_H[1]).to_bytes(8, 'big') +
+                (FINAL_H[2]).to_bytes(8, 'big') + (FINAL_H[3]).to_bytes(8, 'big') +
+                (FINAL_H[4]).to_bytes(8, 'big') + (FINAL_H[5]).to_bytes(8, 'big') +
+                (FINAL_H[6]).to_bytes(8, 'big') + (FINAL_H[7]).to_bytes(8, 'big')).hex()
         
         
     def file_digest(self, filename, isBinary):
@@ -151,10 +159,14 @@ class SHA512(Hash):
                 total += len(data)
                 binary_string = string_to_binary(data) if not isBinary else binaries_to_binary_string(data)
                 self.update(binary_string)
+                
+        FINAL_H = self.H
         
-        return ((self.H[0]).to_bytes(8, 'big') + (self.H[1]).to_bytes(8, 'big') +
-                (self.H[2]).to_bytes(8, 'big') + (self.H[3]).to_bytes(8, 'big') +
-                (self.H[4]).to_bytes(8, 'big') + (self.H[5]).to_bytes(8, 'big') +
-                (self.H[6]).to_bytes(8, 'big') + (self.H[7]).to_bytes(8, 'big')).hex()       
+        self.__init__()
+        
+        return ((FINAL_H[0]).to_bytes(8, 'big') + (FINAL_H[1]).to_bytes(8, 'big') +
+                (FINAL_H[2]).to_bytes(8, 'big') + (FINAL_H[3]).to_bytes(8, 'big') +
+                (FINAL_H[4]).to_bytes(8, 'big') + (FINAL_H[5]).to_bytes(8, 'big') +
+                (FINAL_H[6]).to_bytes(8, 'big') + (FINAL_H[7]).to_bytes(8, 'big')).hex()       
             
     

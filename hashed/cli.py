@@ -1,13 +1,19 @@
 import argparse
-from hashed.hash_lib import HashLib
 import time
+import sys
+import os
+
+package_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+sys.path.insert(0, package_dir)
+
+from hashed.hash_lib import HashLib
 
 def setup_args():
     parser = argparse.ArgumentParser(
-                    prog='Hashing Library',
-                    description='Provides secured hashes for given data',
-                    epilog='Currently supported hashes [SHA256, SHA512]',
-                    formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+                prog='Hashing Library',
+                description='Provides secured hashes for given data',
+                epilog='Currently supported hashes [SHA256, SHA512]',
+                formatter_class=argparse.ArgumentDefaultsHelpFormatter)
     
     parser.add_argument("--sha256", action='store_true', help="Generates SHA-256 for given input")
     parser.add_argument("--sha512", action='store_true', help="Generates SHA-512 for given input")

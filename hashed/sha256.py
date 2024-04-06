@@ -6,10 +6,7 @@ class SHA256(Hash):
     
     def __init__(self):
         super().__init__()
-        self.H = [
-            0x6a09e667, 0xbb67ae85, 0x3c6ef372, 0xa54ff53a, 
-            0x510e527f, 0x9b05688c, 0x1f83d9ab, 0x5be0cd19
-        ]
+        self.set_H()
         self.K =  [
             0x428a2f98, 0x71374491, 0xb5c0fbcf, 0xe9b5dba5, 0x3956c25b, 0x59f111f1, 0x923f82a4, 0xab1c5ed5,
             0xd807aa98, 0x12835b01, 0x243185be, 0x550c7dc3, 0x72be5d74, 0x80deb1fe, 0x9bdc06a7, 0xc19bf174,
@@ -25,6 +22,11 @@ class SHA256(Hash):
         self.HASHED_BITS = 0
         self.DIGEST_SIZE= 32
         
+    def set_H(self): 
+        self.H = [
+            0x6a09e667, 0xbb67ae85, 0x3c6ef372, 0xa54ff53a, 
+            0x510e527f, 0x9b05688c, 0x1f83d9ab, 0x5be0cd19
+        ]
         
     def create_message_schedule(self, block):
         w = []
@@ -109,12 +111,18 @@ class SHA256(Hash):
         elif not isinstance(msg, bytearray):
             raise TypeError  
         
+        self.HASHED_BITS = 0
+        
         self.update(binary_string)
         
-        return ((self.H[0]).to_bytes(4, 'big') + (self.H[1]).to_bytes(4, 'big') +
-                (self.H[2]).to_bytes(4, 'big') + (self.H[3]).to_bytes(4, 'big') +
-                (self.H[4]).to_bytes(4, 'big') + (self.H[5]).to_bytes(4, 'big') +
-                (self.H[6]).to_bytes(4, 'big') + (self.H[7]).to_bytes(4, 'big'))  
+        FINAL_H = self.H
+        
+        self.set_H()
+        
+        return ((FINAL_H[0]).to_bytes(4, 'big') + (FINAL_H[1]).to_bytes(4, 'big') +
+                (FINAL_H[2]).to_bytes(4, 'big') + (FINAL_H[3]).to_bytes(4, 'big') +
+                (FINAL_H[4]).to_bytes(4, 'big') + (FINAL_H[5]).to_bytes(4, 'big') +
+                (FINAL_H[6]).to_bytes(4, 'big') + (FINAL_H[7]).to_bytes(4, 'big'))  
         
     
     def hex_digest(self, msg):
@@ -123,30 +131,39 @@ class SHA256(Hash):
         elif not isinstance(msg, bytearray):
             raise TypeError  
         
+        self.HASHED_BITS = 0
+        
         self.update(binary_string)
         
-        return ((self.H[0]).to_bytes(4, 'big') + (self.H[1]).to_bytes(4, 'big') +
-                (self.H[2]).to_bytes(4, 'big') + (self.H[3]).to_bytes(4, 'big') +
-                (self.H[4]).to_bytes(4, 'big') + (self.H[5]).to_bytes(4, 'big') +
-                (self.H[6]).to_bytes(4, 'big') + (self.H[7]).to_bytes(4, 'big')).hex()
+        FINAL_H = self.H
+        
+        self.set_H()
+         
+        return ((FINAL_H[0]).to_bytes(4, 'big') + (FINAL_H[1]).to_bytes(4, 'big') +
+                (FINAL_H[2]).to_bytes(4, 'big') + (FINAL_H[3]).to_bytes(4, 'big') +
+                (FINAL_H[4]).to_bytes(4, 'big') + (FINAL_H[5]).to_bytes(4, 'big') +
+                (FINAL_H[6]).to_bytes(4, 'big') + (FINAL_H[7]).to_bytes(4, 'big')).hex()
         
         
     def file_digest(self, filename, isBinary):
         flag = 'r' if not isBinary else 'rb'
-        total = 0
+        self.HASHED_BITS = 0
         with open(filename, flag) as f:
             reader = BufferedReader(f)
             while True:
                 data = reader.read(16384)
                 if not data:
                     break
-                total += len(data)
                 binary_string = string_to_binary(data) if not isBinary else binaries_to_binary_string(data)
                 self.update(binary_string)
+                
+        FINAL_H = self.H
         
-        return ((self.H[0]).to_bytes(4, 'big') + (self.H[1]).to_bytes(4, 'big') +
-                (self.H[2]).to_bytes(4, 'big') + (self.H[3]).to_bytes(4, 'big') +
-                (self.H[4]).to_bytes(4, 'big') + (self.H[5]).to_bytes(4, 'big') +
-                (self.H[6]).to_bytes(4, 'big') + (self.H[7]).to_bytes(4, 'big')).hex()       
+        self.set_H()
+        
+        return ((FINAL_H[0]).to_bytes(4, 'big') + (FINAL_H[1]).to_bytes(4, 'big') +
+                (FINAL_H[2]).to_bytes(4, 'big') + (FINAL_H[3]).to_bytes(4, 'big') +
+                (FINAL_H[4]).to_bytes(4, 'big') + (FINAL_H[5]).to_bytes(4, 'big') +
+                (FINAL_H[6]).to_bytes(4, 'big') + (FINAL_H[7]).to_bytes(4, 'big')).hex()       
             
     
