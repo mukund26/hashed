@@ -115,7 +115,7 @@ class SHA512(Hash):
         if isinstance(msg, str):
             binary_string = string_to_binary(msg)
         elif not isinstance(msg, bytearray):
-            raise TypeError  
+            raise TypeError("Invalid message type")
         
         self.update(binary_string)
         
@@ -133,7 +133,7 @@ class SHA512(Hash):
         if isinstance(msg, str):
             binary_string = string_to_binary(msg)
         elif not isinstance(msg, bytearray):
-            raise TypeError  
+            raise TypeError("Invalid message type")
         
         self.update(binary_string)
         
