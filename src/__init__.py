@@ -1,2 +1,1 @@
-from src.hash import Hash
-from src.sha256 import SHA256
+from hash_lib import HashLib
