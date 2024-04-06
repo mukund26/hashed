@@ -1,7 +1,10 @@
 > A simple SHA-2 implementation in python which gives hash for string or a file.
-> It calculates SHA-256 and SHA-512 right now
+> Suported hashing algorithms: SHA56, SHA512
 
-## Usage - as CLI Tool
+[![PyPI version](https://img.shields.io/pypi/v/hashed.svg)](https://pypi.org/project/hashed/)
+
+
+## CLI Tool Usage
 
 * Example
 
@@ -32,7 +35,7 @@ Currently supported hashes [SHA256, SHA512]
 ```
 
 
-## Usage - as Library
+## Package Usage
 
 ```python
 from hashed import HashLib
