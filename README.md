@@ -1,8 +1,7 @@
+## Python Package Link: [![PyPI version](https://img.shields.io/pypi/v/hashed.svg)](https://pypi.org/project/hashed/)
+
 > A simple SHA-2 implementation in python which gives hash for string or a file.
 > Suported hashing algorithms: SHA56, SHA512
-
-[![PyPI version](https://img.shields.io/pypi/v/hashed.svg)](https://pypi.org/project/hashed/)
-
 
 ## CLI Tool Usage
 
