@@ -1,5 +1,5 @@
 import argparse
-from hash_lib import HashLib
+from hashed.hash_lib import HashLib
 import time
 
 def setup_args():

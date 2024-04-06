@@ -1,6 +1,6 @@
-from hash import Hash
-from common import string_to_binary, create_blocks, string_to_int, right_rotate, right_shift, binaries_to_binary_string
-from buffer_reader import BufferedReader
+from hashed.hash import Hash
+from hashed.common import string_to_binary, create_blocks, string_to_int, right_rotate, right_shift, binaries_to_binary_string
+from hashed.buffer_reader import BufferedReader
 
 class SHA256(Hash):
     

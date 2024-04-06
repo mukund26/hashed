@@ -1,5 +1,5 @@
-from sha256 import SHA256
-from sha512 import SHA512
+from hashed.sha256 import SHA256
+from hashed.sha512 import SHA512
 
 class HashLib():
     
