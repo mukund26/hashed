@@ -28,7 +28,7 @@ jobs:
 
       - name: Publish Package
         env:
-          TWINE_USERNAME: 'padfoot'
-          TWINE_PASSWORD: '#Mukund2602'
+          TWINE_USERNAME: ${{ secrets.TWINE_USERNAME }}
+          TWINE_TOKEN: ${{ secrets.TWINE_TOKEN }}
         run: |
-          python -m twine upload --skip-existing dist/*
+          python -m twine upload --skip-existing --username ${{ env.TWINE_USERNAME }} --password ${{ env.TWINE_TOKEN }} dist/*
