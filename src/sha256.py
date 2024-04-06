@@ -141,7 +141,6 @@ class SHA256(Hash):
                 if not data:
                     break
                 total += len(data)
-                print(f'Calculating hash, read {total} bytes')
                 binary_string = string_to_binary(data) if not isBinary else binaries_to_binary_string(data)
                 self.update(binary_string)
         

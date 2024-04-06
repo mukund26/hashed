@@ -37,7 +37,7 @@ if __name__ == '__main__':
             print('Hash: ', h.file_digest(args['binary_file'], True))
             end_time = time.time()
         if args['bits']:
-            print("Bytes Hashed: ", h.hashed_bits/8)
+            print("Bytes Hashed: ", h.hashed_bits)
         if args['perf']:
             print(f'Time Taken: {end_time - start_time} seconds')
             
@@ -54,7 +54,7 @@ if __name__ == '__main__':
             print('Hash: ', h.file_digest(args['binary_file'], True))
             end_time = time.time()
         if args['bits']:
-            print("Bytes Hashed: ", h.hashed_bits/8)
+            print("Bytes Hashed: ", h.hashed_bits)
         if args['perf']:
             print(f'Time Taken: {end_time - start_time} seconds')
             
