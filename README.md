@@ -8,8 +8,13 @@
 * Example
 
 ```python
-python src/cli.py -s "Hello World!!" --sha256
+python hashed/cli.py -s "Hello World!!" --sha256
 ```
+
+```
+Hash:  096c0a72c31f9a2d65126d8e8a401a2ab2f2e21d0a282a6ffe6642bbef65ffd9
+```
+
 
 * For help
 ```python
@@ -40,6 +45,21 @@ Currently supported hashes [SHA256, SHA512]
 from hashed import HashLib
 h = HashLib('sha256').hasher_class()
 h.hex_digest("Hello World")
+```
+
+## Code Coverage and UTs
+
+- Run UT
+
+```
+pytest
+```
+
+- Generate Coverage
+
+```
+coverage run -m pytest test
+coverage html
 ```
 
 ## Functions Supported
