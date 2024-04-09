@@ -20,6 +20,11 @@ def test_sha256_digest():
     
     result_file = hasher.file_digest(filename, isBinary=False)
     assert result_file == 'f29bc64a9d3732b4b9035125fdb3285f5b6455778edca72414671e0ca3b2e0de'
+    
+    # Test file_digest method with a file containing an image - binary
+    filename = 'test/WALDON-LIVING-ROOM.jpg'
+    result_file = hasher.file_digest(filename, isBinary=True)
+    assert result_file == '746ed1bdbaeadde5212bbf2003a52d2415fa168c990cb8e6da4aa7412a9de130'
 
 
 def test_digest_with_non_bytearray():

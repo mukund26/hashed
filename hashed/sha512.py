@@ -127,7 +127,7 @@ class SHA512(Hash):
         pos = 0
         with open(filename, 'rb' if isBinary else 'r') as f:
             while True:
-                data = f.read(64)
+                data = f.read(128)
                 pos += len(data)
                 if not data:
                     break
