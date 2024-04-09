@@ -1,13 +1,15 @@
-from hashed.sha512 import SHA512
+from hashed.hash_lib import HashLib
 import pytest
 
 def test_sha512_digest():
     # Create an instance of SHA512
-    hasher = SHA512()
+    hasher = HashLib('sha512').hasher_class()
     
     # Test digest method with a string input
     result = hasher.digest('Hello, world!')
     assert result == b'\xc1R|\xd8\x93\xc1$w=\x81\x19\x11\x97\x0c\x8f\xe6\xe8W\xd6\xdf]\xc9"k\xd8\xa1`aL\x0c\xd9c\xa4\xdd\xea+\x94\xbb}6\x02\x1e\xf9\xd8e\xd5\xce\xa2\x94\xa8-\xd4\x9a\x0b\xb2i\xf5\x1fnzW\xf7\x94!'
+    assert hasher.digest_size() == 64
+    assert hasher.hashed_bits == 128
     
     # Test hex_digest method with a string input
     result_hex = hasher.hex_digest('Hello, world!')
@@ -26,17 +28,15 @@ def test_sha512_digest():
     result_file = hasher.file_digest(filename, isBinary=True)
     assert result_file == '3788312ce602fa9ec4b8ed2a6592b1750afc093e0fabf1acce9d088a299cf73658d89a7508d4ba0d8bb700896b1afa19beb29e5dd3f9b1cfe21d2b518e6428bc'
     
-    
-def test_digest_with_non_bytearray():
-    sha512 = SHA512()
+    # Invalid input
     msg = 123  # Invalid input, not a string or bytearray
     
     with pytest.raises(TypeError) as e:
-        sha512.digest(msg)
+        hasher.digest(msg)
     
     assert str(e.value) == "Invalid message type"
     
     with pytest.raises(TypeError) as e:
-        sha512.hex_digest(msg)
+        hasher.hex_digest(msg)
     
     assert str(e.value) == "Invalid message type"

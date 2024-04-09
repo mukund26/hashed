@@ -102,29 +102,19 @@ class SHA256(Hash):
         
     def digest(self, msg):
         binary_data = read_string_msg(msg)
-        
         self.HASHED_BITS = 0
-        
         self.update(binary_data)
-        
         FINAL_H = self.H
-        
         self.set_H()
-        
         return b''.join(x.to_bytes(4, 'big') for x in FINAL_H)  
         
     
     def hex_digest(self, msg):
         binary_data = read_string_msg(msg)
-        
         self.HASHED_BITS = 0
-        
         self.update(binary_data)
-        
         FINAL_H = self.H
-        
         self.set_H()
-        
         return b''.join(x.to_bytes(4, 'big') for x in FINAL_H).hex()
         
         
@@ -141,9 +131,6 @@ class SHA256(Hash):
                 byte_data = bytearray(data) if isBinary else bytearray(data, 'ascii')
                 last_chunk = pos >= length
                 self.update(byte_data, length * 8, last_chunk)
-        # f = open(filename, 'rb' if isBinary else 'r')
-        # data = bytearray(f.read()) if isBinary else bytearray(f.read(), 'ascii')
-        # self.update(data)
         FINAL_H = self.H
         self.set_H()
         return b''.join(x.to_bytes(4, 'big') for x in FINAL_H).hex()    

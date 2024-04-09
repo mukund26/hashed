@@ -1,9 +1,9 @@
-from hashed.sha256 import SHA256
+from hashed.hash_lib import HashLib
 import pytest
 
 def test_sha256_digest():
     # Create an instance of SHA256
-    hasher = SHA256()
+    hasher = HashLib('sha256').hasher_class()
     
     # Test digest method with a string input
     result = hasher.digest('Hello, world!')
@@ -26,17 +26,15 @@ def test_sha256_digest():
     result_file = hasher.file_digest(filename, isBinary=True)
     assert result_file == '746ed1bdbaeadde5212bbf2003a52d2415fa168c990cb8e6da4aa7412a9de130'
 
-
-def test_digest_with_non_bytearray():
-    sha256 = SHA256()
+    #Invalid input
     msg = 123  # Invalid input, not a string or bytearray
     
     with pytest.raises(TypeError) as e:
-        sha256.digest(msg)
+        hasher.digest(msg)
     
     assert str(e.value) == "Invalid message type"
     
     with pytest.raises(TypeError) as e:
-        sha256.hex_digest(msg)
+        hasher.hex_digest(msg)
     
     assert str(e.value) == "Invalid message type"

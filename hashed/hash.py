@@ -35,5 +35,5 @@ class Hash(ABC):
     
     @property
     def hashed_bits(self):
-        return self.HASHED_BITS / 8
+        return self.HASHED_BITS
     
